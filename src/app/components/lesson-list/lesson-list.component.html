@@ -2,7 +2,7 @@
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h4>Lecciones</h4>
     <button class="btn btn-primary" (click)="openLessonForm()">
-      <i class=""></i> Nueva Lección
+      Nueva Lección
     </button>
   </div>
 
@@ -21,13 +21,17 @@
           <td>{{ lesson.title }}</td>
           <td>{{ lesson.duration }}</td>
           <td>
-            <button class="btn btn-outline-secondary btn-sm me-1" (click)="openLessonForm(lesson)">
+            <button
+              class="btn btn-outline-secondary btn-sm me-1"
+              (click)="openLessonForm(lesson)"
+            >
               Editar
-              <i class=""></i>
             </button>
-            <button class="btn btn-outline-danger btn-sm" (click)="deleteLesson(lesson.id!)">
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="deleteLesson(lesson.id!)"
+            >
               Eliminar
-              <i class=""></i>
             </button>
           </td>
         </tr>

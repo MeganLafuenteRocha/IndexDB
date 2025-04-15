@@ -86,7 +86,6 @@ export class IndexedDBService {
       this.db = (event.target as IDBOpenDBRequest).result;
       console.log("IndexedDB inicializada correctamente");
 
-      // Cargar datos iniciales
       this.loadAllData();
     };
 
@@ -98,14 +97,13 @@ export class IndexedDBService {
     };
   }
 
-  // Cargar todos los datos
   private loadAllData(): void {
     this.getAllUsers().subscribe();
     this.getAllCourses().subscribe();
     this.getAllLessons().subscribe();
   }
 
-  // Métodos genéricos para transacciones
+  // Genéricos para transacciones
   private executeTransaction<T>(
     storeName: string,
     mode: IDBTransactionMode,
@@ -412,12 +410,11 @@ export class IndexedDBService {
     );
   }
 
-  // Método para cargar datos de ejemplo si la base de datos está vacía
   loadSampleData(): Observable<boolean> {
     return this.getAllUsers().pipe(
       switchMap((users) => {
         if (users.length > 0) {
-          return of(false); // Ya hay datos
+          return of(false);
         }
 
         // Usuarios de ejemplo
@@ -425,7 +422,7 @@ export class IndexedDBService {
           { name: "Carlos Rodríguez", avatar: "/assets/avatars/user1.jpg" },
         ];
 
-        // Añadir usuarios y luego cursos y lecciones
+        // Añadir usuarios, luego cursos y lecciones
         const addUsers$ = sampleUsers.map((user) => this.addUser(user));
 
         return from(Promise.all(addUsers$.map((obs) => obs.toPromise()))).pipe(

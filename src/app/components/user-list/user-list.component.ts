@@ -1,13 +1,13 @@
-import { Component, inject, type OnInit } from "@angular/core";
-import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { UserFormComponent } from "../user-form/user-form.component";
-import { IndexedDBService, User } from "../../services/indexdb.service";
-import { CourseListComponent } from "../course-list/course-list.component";
+import { Component, inject, type OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserFormComponent } from '../user-form/user-form.component';
+import { IndexedDBService, User } from '../../services/indexdb.service';
+import { CourseListComponent } from '../course-list/course-list.component';
 
 @Component({
-  selector: "app-user-list",
-  templateUrl: "./user-list.component.html",
-  styleUrls: ["./user-list.component.css"],
+  selector: 'app-user-list',
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css'],
   imports: [CourseListComponent],
 })
 export class UserListComponent implements OnInit {
@@ -22,11 +22,11 @@ export class UserListComponent implements OnInit {
   ngOnInit(): void {
     this.loadUsers();
 
-    // Cargar datos de ejemplo si es necesario
+    // Cargar datos de ejemplo
     setTimeout(() => {
       this.dbService.loadSampleData().subscribe((loaded) => {
         if (loaded) {
-          console.log("Datos de ejemplo cargados correctamente");
+          console.log('Datos de ejemplo cargados correctamente');
           this.loadUsers();
         }
       });
@@ -61,7 +61,7 @@ export class UserListComponent implements OnInit {
   deleteUser(id: number): void {
     if (
       confirm(
-        "¿Estás seguro de que deseas eliminar este usuario? Se eliminarán también todos sus cursos y lecciones."
+        '¿Estás seguro de que deseas eliminar este usuario? Se eliminarán también todos sus cursos y lecciones.'
       )
     ) {
       this.dbService.deleteUser(id).subscribe((success) => {
