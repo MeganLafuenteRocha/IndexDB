@@ -97,7 +97,7 @@ export class AppComponent implements OnInit {
     // Inicialmente mostrar todos los cursos
     this.updateCoursesList();
   }
-
+  //comentario de prueba
   selectUser(user: User) {
     this.selectedUser = user;
     this.filteredCourses = user.courses;
