@@ -1,0 +1,41 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEditing ? 'Editar Lección' : 'Nueva Lección' }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cancel()"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="lessonForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+      @if (lessonForm.get('title')?.invalid && lessonForm.get('title')?.touched) {
+        <div class="text-danger">
+          El título es obligatorio
+        </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label">Contenido</label>
+      <textarea class="form-control" id="content" rows="5" formControlName="content"></textarea>
+      @if (lessonForm.get('content')?.invalid && lessonForm.get('content')?.touched) {
+        <div class="text-danger">
+          El contenido es obligatorio
+        </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="duration" class="form-label">Duración (minutos)</label>
+      <input type="number" class="form-control" id="duration" formControlName="duration">
+      @if (lessonForm.get('duration')?.invalid && lessonForm.get('duration')?.touched) {
+        <div class="text-danger">
+          La duración debe ser mayor a 0
+        </div>
+      }
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+  <button type="button" class="btn btn-primary" [disabled]="lessonForm.invalid" (click)="onSubmit()">
+    {{ isEditing ? 'Actualizar' : 'Guardar' }}
+  </button>
+</div>

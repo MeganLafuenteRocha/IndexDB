@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Gestión de Usuarios</h2>
+        <button class="btn btn-primary" (click)="openUserForm()">
+            <i class=""></i> Nuevo Usuario
+        </button>
+    </div>
+
+    <!-- Chips de usuarios con fotos -->
+    <div class="mb-4 user-chips">
+        @for (user of users; track user) {
+        <button class="btn user-chip" [class.active]="selectedUser?.id === user.id" (click)="selectUser(user)">
+            <img [src]="user.avatar" [alt]="user.name" class="user-avatar">
+            <span>{{ user.name }}</span>
+            <div class="user-actions">
+                <button class="btn btn-sm btn-outline-primary" (click)="openUserForm(user); $event.stopPropagation()">
+                    Editar
+                    <i class=""></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" (click)="deleteUser(user.id!); $event.stopPropagation()">
+                    Eliminar
+                    <i class=""></i>
+                </button>
+            </div>
+        </button>
+        }
+    </div>
+
+    <!-- Detalles del usuario seleccionado -->
+    @if (selectedUser) {
+    <div class="mt-4">
+        <app-course-list [userId]="selectedUser.id!"></app-course-list>
+    </div>
+    }
+
+    @if (!selectedUser && users.length > 0) {
+    <div class="alert alert-info mt-4">
+        Selecciona un usuario para ver sus cursos
+    </div>
+    }
+
+    @if (users.length === 0) {
+    <div class="alert alert-warning mt-4">
+        No hay usuarios registrados. Crea un nuevo usuario para comenzar.
+    </div>
+    }
+</div>

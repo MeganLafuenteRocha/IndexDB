@@ -1,0 +1,313 @@
+/* You can add global styles to this file, and also import other style files */
+/* Importar Bootstrap */
+/* Importar Bootstrap Icons */
+
+/* Estilos globales */
+body {
+  background-color: #fafafa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+/* Personalización de botones */
+.btn-outline-primary {
+  &:hover,
+  &:focus,
+  &.active {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+  }
+}
+
+.user-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+  }
+
+  &:hover {
+    background-color: #e9ecef;
+
+    &.active {
+      background-color: #0b5ed7;
+    }
+  }
+
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+  }
+}
+
+.card {
+  transition: transform 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img-top {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+.contact-section {
+  background-color: #f0f5ff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.btn-group .btn {
+  border-radius: 20px;
+  margin-right: 5px;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+  }
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+
+/* // */
+.user-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+  }
+
+  &:hover {
+    background-color: #e9ecef;
+
+    &.active {
+      background-color: #0b5ed7;
+    }
+  }
+
+  .user-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+    object-fit: cover;
+  }
+}
+
+.card {
+  transition: transform 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img-top {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+.contact-section {
+  background-color: #f0f5ff;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.btn-group .btn {
+  border-radius: 20px;
+  margin-right: 5px;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+  }
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px;
+
+  i {
+    font-size: 1.2rem;
+  }
+}
+/* / */
+/* Importar Bootstrap */
+/* @import "~bootstrap/dist/css/bootstrap.min.css"; */
+/* Importar Bootstrap Icons */
+/* @import "~bootstrap-icons/font/bootstrap-icons.css"; */
+
+/* Estilos globales */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #fafafa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h2,
+h3,
+h4 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los chips de usuario */
+.user-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  position: relative;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+  }
+
+  &:hover {
+    background-color: #e9ecef;
+
+    &.active {
+      background-color: #0b5ed7;
+    }
+
+    .user-actions {
+      opacity: 1;
+    }
+  }
+
+  .user-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+
+  .user-actions {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    margin-left: 10px;
+  }
+}
+
+/* Estilos para las tarjetas de cursos */
+.card {
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img-top {
+    height: 180px;
+    object-fit: cover;
+  }
+}
+
+/* Estilos para los formularios */
+.avatar-preview,
+.image-preview {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 10px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Estilos para los botones de filtro */
+.btn-group .btn {
+  border-radius: 20px;
+  margin-right: 5px;
+
+  &.active {
+    background-color: #0d6efd;
+    color: white;
+  }
+}

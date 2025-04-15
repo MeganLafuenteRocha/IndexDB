@@ -1,0 +1,55 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ isEditing ? 'Editar Curso' : 'Nuevo Curso' }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cancel()"></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Título</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+      @if (courseForm.get('title')?.invalid && courseForm.get('title')?.touched) {
+        <div class="text-danger">
+          El título es obligatorio
+        </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">URL de Imagen</label>
+      <input type="text" class="form-control" id="image" formControlName="image">
+      @if (courseForm.get('image')?.invalid && courseForm.get('image')?.touched) {
+        <div class="text-danger">
+          La URL de la imagen es obligatoria
+        </div>
+      }
+      <small class="form-text text-muted">Ingresa la URL de una imagen para el curso</small>
+    </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Categoría</label>
+      <select class="form-select" id="category" formControlName="category">
+        <option value="" disabled>Selecciona una categoría</option>
+        @for (category of categories; track category) {
+          <option [value]="category">{{ category }}</option>
+        }
+      </select>
+      @if (courseForm.get('category')?.invalid && courseForm.get('category')?.touched) {
+        <div class="text-danger">
+          La categoría es obligatoria
+        </div>
+      }
+    </div>
+    @if (courseForm.get('image')?.value) {
+      <div class="mb-3">
+        <label class="form-label">Vista previa</label>
+        <div class="image-preview">
+          <img [src]="courseForm.get('image')?.value" alt="Vista previa de la imagen">
+        </div>
+      </div>
+    }
+  </form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="cancel()">Cancelar</button>
+  <button type="button" class="btn btn-primary" [disabled]="courseForm.invalid" (click)="onSubmit()">
+    {{ isEditing ? 'Actualizar' : 'Guardar' }}
+  </button>
+</div>

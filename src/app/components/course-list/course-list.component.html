@@ -1,0 +1,63 @@
+<div class="course-container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3>Cursos</h3>
+        <button class="btn btn-primary" (click)="openCourseForm()">
+            <i class=""></i> Nuevo Curso
+        </button>
+    </div>
+
+    <!-- Filtros de categoría -->
+    <div class="mb-4">
+        <div class="btn-group" role="group" aria-label="Filtros de categoría">
+            @for (category of categories; track category) {
+            <button type="button" class="btn btn-outline-primary" [class.active]="selectedCategory === category"
+                (click)="filterByCategory(category)">
+                {{ category }}
+            </button>
+            }
+        </div>
+    </div>
+
+    <!-- Tarjetas de cursos -->
+    <div class="row">
+        @for (course of getFilteredCourses(); track course) {
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <img [src]="course.image" class="card-img-top" [alt]="course.title">
+                <div class="card-body">
+                    <h5 class="card-title">{{ course.title }}</h5>
+                    <p class="card-text"><span class="badge bg-info">{{ course.category }}</span></p>
+                    <div class="d-flex justify-content-between">
+                        <button class="btn btn-outline-primary btn-sm" (click)="selectCourse(course)">
+                            Ver lecciones
+                        </button>
+                        <div>
+                            <button class="btn btn-outline-secondary btn-sm me-1" (click)="openCourseForm(course)">
+                                Editar
+                                <i class=""></i>
+                            </button>
+                            <button class="btn btn-outline-danger btn-sm" (click)="deleteCourse(course.id!)">
+                                Eliminar
+                                <i class=""></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+
+    @if (getFilteredCourses().length === 0) {
+    <div class="alert alert-info mt-4">
+        No hay cursos en esta categoría. Crea un nuevo curso para comenzar.
+    </div>
+    }
+
+    <!-- Detalles del curso seleccionado -->
+    @if (selectedCourse) {
+    <div class="mt-4">
+        <app-lesson-list [courseId]="selectedCourse.id!"></app-lesson-list>
+    </div>
+    }
+</div>
