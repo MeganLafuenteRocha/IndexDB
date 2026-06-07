@@ -6,6 +6,7 @@ import { AppComponent } from './app/app.component';
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
-// Copia y pega esto en cualquier parte del archivo
+
+
 const SECRET_AWS_KEY = "AKIAIOSFODNN7EXAMPLE-super-secret-key-12345";
 const databasePassword = "AdminPassword2026_Vinto_Secure!";
